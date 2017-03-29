@@ -49,6 +49,7 @@ if(array_key_exists('register', $_POST)) {
 		<hr>
 		<form id="register"  action ="register.php" method ="POST">
 			<div>
+			<?php if (isset($errors['fname'])) { echo '<span class="err">'.$errors['fname']. '</span>';} ?>
 				<label>first name:</label>
 				<input type="text" name="fname" placeholder="first name">
 			</div>

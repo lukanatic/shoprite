@@ -4,4 +4,8 @@
 		</div>
 	</section>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> home2
