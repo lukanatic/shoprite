@@ -10,36 +10,36 @@ if(array_key_exists('register', $_POST)) {
 
 	#validate first name
 	if(empty($_POST['fname'])) {
-	$errors['fname'] = "please enter a first name";
+	$errors['fname'] = "please enter first name";
 	}
 
 		#validate last name
 	if(empty($_POST['lname'])) {
-	$errors['lname'] = "please enter a last name";
+	$errors['lname'] = "please enter last name";
 	}
 
-	#validate first name
+	#validate email
 	if(empty($_POST['email'])) {
-	$errors['email'] = "please enter a email";
+	$errors['email'] = "please enter email";
 	}
 
-	#validate first name
+	#validate password
 	if(empty($_POST['password'])) {
-	$errors['password'] = "please enter a confirm password";
+	$errors['password'] = "please enter confirm password";
 	}
 
-	#validate first name
-	if(empty($_POST['password']) && ($_POST['pword'])) {
-	$errors['password'] = "please enter a confirm password";
+	#validate confirm password
+	if($_POST['pword'] != $_POST['password']) {
+	$errors['pword'] = "please enter confirm password";
 	}
 
 
 	if(empty($errors)) {
 		//
-	} else {
-		foreach ($errors as $err) {
-			echo $err."<br/>";
-		}
+	// } else {
+	// 	foreach ($errors as $err) {
+	// 		echo $err."<br/>";
+	// 	}
 	}
 }
 
@@ -54,20 +54,28 @@ if(array_key_exists('register', $_POST)) {
 				<input type="text" name="fname" placeholder="first name">
 			</div>
 			<div>
+			<?php if (isset($errors['lname'])) { echo '<span class="err">'.$errors['lname']. '</span>';} ?>
+
 				<label>last name:</label>
 				<input type="text" name="lname" placeholder="last name">
 			</div>
 
 			<div>
+			<?php if (isset($errors['email'])) { echo '<span class="err">'.$errors['email']. '</span>';} ?>
+
 				<label>email:</label>
 				<input type="text" name="email" placeholder="email">
 			</div>
 			<div>
+			<?php if (isset($errors['password'])) { echo '<span class="err">'.$errors['password']. '</span>';} ?>
+
 				<label>password:</label>
 				<input type="password" name="password" placeholder="password">
 			</div>
 
 			<div>
+			<?php if (isset($errors['password'])) { echo '<span class="err">'.$errors['password']. '</span>';} ?>
+
 				<label>confirm password:</label>
 				<input type="password" name="pword" placeholder="password">
 			</div>
