@@ -23,7 +23,7 @@ define("MAX_FILE_SIZE", "2097152");
 
 $ext = ["image/jpg", "image/jpeg", "image/png"];
 
- if (array_key_exists('save', $_POST)) {
+if (array_key_exists('save', $_POST)) {
 	$errors = [];
 	// print_r($_FILES); exit();
 	#be sure a file was selected..
@@ -69,4 +69,3 @@ $ext = ["image/jpg", "image/jpeg", "image/png"];
 
 <input type="submit" name="save">
 </form>
-
