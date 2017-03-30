@@ -1,6 +1,10 @@
 <?php
 #title
 $title = "register";
+
+#load db connection
+include 'includes/db.php';
+
 #include header
 include 'includes/header.php';
 
@@ -35,11 +39,25 @@ if(array_key_exists('register', $_POST)) {
 
 
 	if(empty($errors)) {
-		//
-	// } else {
-	// 	foreach ($errors as $err) {
-	// 		echo $err."<br/>";
-	// 	}
+		//do database stuff
+
+		#eliminate unwanted spaces from the values in the $_POST array
+		$clean = array_map('trim', $_POST);
+
+		#has the password
+		$hash = password_hash($clean['password'], PASSWORD_BCRYPT);
+
+		#insert into database
+		$stmt = $pdo->prepare("INSERT INTO admin(fname, lname, email, hash) VALUES (:fn, :ln, :e, :h)");
+
+		#bind params
+		$data = [':fn'=>$clean['fname'],
+				':ln'=>$clean['lname'],
+				':e'=>$clean['email'],
+				':h'=>$hash
+				];
+
+				$stmt->execute($data);
 	}
 }
 
